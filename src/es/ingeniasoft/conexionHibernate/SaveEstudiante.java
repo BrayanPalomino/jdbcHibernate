@@ -11,11 +11,19 @@ public class SaveEstudiante {
         Session miSession = miFactory.openSession();
 
         try{
-            Estudiante estudiantes = new Estudiante("Tania", "Marin", "San Pedro");
+            Estudiante estudiantes = new Estudiante("Jenny", "Marin", "San Pedro");
             miSession.beginTransaction();
             miSession.save(estudiantes);
             miSession.getTransaction().commit();
             System.out.println("registro insertado en BBDD");
+
+            //lectura
+           // Estudiante estudiantes = new Estudiante();
+            miSession.beginTransaction();
+            System.out.println("lectura con registro con Id: "+ estudiantes.getId());
+            Estudiante estudianteInsertado=miSession.get(Estudiante.class, 1);
+            System.out.println("Registro: "+estudianteInsertado);
+            miSession.getTransaction().commit();
             miSession.close();
 
         }finally{

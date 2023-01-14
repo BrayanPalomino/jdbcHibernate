@@ -59,6 +59,7 @@ public class Estudiante {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Id")
     private int Id;
 
